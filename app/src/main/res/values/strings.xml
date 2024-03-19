@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">LangTrans</string>
+    <string name="Language_translate">Language Translator</string>
+    <string name="source_text">Source Text</string>
+    <string name="voice_input">Voice Input</string>
+    <string name="tap_mic_to_say">Tap Mic To say</string>
     <string name="translate">Translate</string>
+    <string name="translated_text">Translated Text</string>
 </resources>
