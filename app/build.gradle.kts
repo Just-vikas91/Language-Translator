@@ -38,7 +38,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     // dependency for firebase core.
     implementation("com.google.firebase:firebase-core:21.1.1")
-// below two dependency are used for language detection
+    // below two dependency are used for language detection
     implementation("com.google.firebase:firebase-ml-natural-language:22.0.1")
     implementation("com.google.firebase:firebase-ml-natural-language-translate-model:20.0.9")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

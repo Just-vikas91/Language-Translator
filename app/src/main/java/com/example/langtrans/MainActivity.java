@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void translateText(int fromLanguageCode, int toLanguageCode, String source){
-        translatedTV.setText("downloading modal...");
+        translatedTV.setText("downloading modal");
         FirebaseTranslatorOptions options= new FirebaseTranslatorOptions.Builder()
                 .setSourceLanguage(fromLanguageCode)
                 .setTargetLanguage(toLanguageCode)

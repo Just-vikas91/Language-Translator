@@ -32,10 +32,10 @@
 
         <Spinner
             android:id="@+id/idFromSpinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="5dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_margin="3dp"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
             android:padding="10dp"/>
 
@@ -43,20 +43,20 @@
         <ImageView
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_right_arrow"
-            app:tint="@color/white"
             android:layout_gravity="center"
-            />
+            android:layout_weight="1"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_right_arrow"
+            app:tint="@color/white" />
 
         <Spinner
             android:id="@+id/idToSpinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="5dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:layout_margin="3dp"
+            android:layout_margin="10dp"
             />
 
     </LinearLayout>
@@ -106,7 +106,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_mic"
-        app:tint="@color/yellow" />
+        app:tint="@color/yellow"
+        android:importantForAccessibility="no" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/idBtnTranslate"
