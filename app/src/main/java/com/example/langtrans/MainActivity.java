@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     String[] toLanguages = {"To","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Catalan","Czesh","French","Welsh","Hindi","Urdu","Russian"};
 
     private static final int REQUEST_PERMISSION_CODE=1;
-    int languageCode,fromLanguageCode,toLanguageCode = 0;
+    int fromLanguageCode;
+    int toLanguageCode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                  startActivityForResult(i,REQUEST_PERMISSION_CODE);
              }catch (Exception e){
                  e.printStackTrace();
-                 Toast.makeText(MainActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                 Toast.makeText(MainActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
              }
          }
      });
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int getlanguageCode(String language){
-        int languageCode = 0;
+        int languageCode;
         switch(language){
             case "English":
                 languageCode = FirebaseTranslateLanguage.EN;
