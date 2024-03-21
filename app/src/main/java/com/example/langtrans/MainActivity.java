@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -30,10 +31,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner fromSpinner, toSpinner;
     private TextInputEditText sourceEdt;
-    private ImageView micIV;
-    private MaterialButton translateBtn;
     private TextView translatedTV;
     String[] fromLanguages = {"From","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Catalan","Czesh","French","Welsh","Hindi","Urdu","Russian"};
     String[] toLanguages = {"To","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Catalan","Czesh","French","Welsh","Hindi","Urdu","Russian"};
@@ -45,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fromSpinner = findViewById(R.id.idFromSpinner);
-        toSpinner = findViewById(R.id.idToSpinner);
+        Spinner fromSpinner = findViewById(R.id.idFromSpinner);
+        Spinner toSpinner = findViewById(R.id.idToSpinner);
         sourceEdt = findViewById(R.id.idEdtSource);
-        micIV = findViewById(R.id.idIVMic);
-        translateBtn = findViewById(R.id.idBtnTranslate);
+        ImageView micIV = findViewById(R.id.idIVMic);
+        MaterialButton translateBtn = findViewById(R.id.idBtnTranslate);
         translatedTV = findViewById(R.id.idTVTranslatedTV);
 
         fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter fromAdapter = new ArrayAdapter(this,R.layout.spinner_item,fromLanguages);
+        ArrayAdapter fromAdapter = new ArrayAdapter(this, R.layout.spinner_item, fromLanguages);
         fromAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fromSpinner.setAdapter(fromAdapter);
 
@@ -126,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void translateText(int fromLanguageCode, int toLanguageCode, String source){
         translatedTV.setText("downloading modal");
         FirebaseTranslatorOptions options= new FirebaseTranslatorOptions.Builder()
