@@ -6,6 +6,4 @@
     android:textAlignment="center"
     android:padding="4dp"
     android:textColor="@color/white"
-    >
-
-</TextView>
+    />

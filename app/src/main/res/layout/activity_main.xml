@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/AppTheme.MaterialTheme"
-    android:background="@color/black_shade_1"
+    android:background="#272222"
     tools:context=".MainActivity">
 
     <TextView
@@ -122,14 +122,13 @@
     <TextView
         android:id="@+id/idTVTranslatedTV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
         android:text="@string/translated_text"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:textColor="@color/yellow"
-        android:textSize="25sp"
-        />
+        android:textSize="25sp" />
 
 </LinearLayout>
