@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText sourceEdt;
     private TextView translatedTV;
     int languageCode = 0;
-    String[] fromLanguages = {"From","Detect-language", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
+    String[] fromLanguages = {"From", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
             , "Czech","Chinese", "Danish", "German", "Greek", "Hindi", "Italian", "Japanese", "Kannada", "Korean", "Marathi", "Persian","Portuguese", "Russian"
             ,"Romanian", "Spanish", "Telugu","Tamil","Turkish","Thai", "Urdu","Ukrainian","Vietnamese", "Welsh"};
     String[] toLanguages = {"To", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
@@ -166,32 +166,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void detectLanguage(String string) {
-        // initializing our firebase language detection.
-        FirebaseLanguageIdentification languageIdentifier = FirebaseNaturalLanguage.getInstance().getLanguageIdentification();
-
-        // adding method to detect language using identify language .
-        languageIdentifier.identifyLanguage(string).addOnSuccessListener(new OnSuccessListener<String>() {
-            @Override
-            public void onSuccess(String s) {
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                // handling error method and displaying a toast message.
-                Toast.makeText(MainActivity.this, "Fail to detect language : \n" + e, Toast.LENGTH_SHORT).show();
-            }
-        });
-//        return string;
-    }
-    protected String  ldetect = sourceEdt.getText().toString();
-//    protected String res = detectLanguage(sourceEdt.getText().toString());
     public int getlanguageCode(String language){
 
         switch(language){
-            case "Detect-language":
-                detectLanguage(ldetect);
             case "English":
                 languageCode = FirebaseTranslateLanguage.EN;
                 break;
@@ -287,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             default:
-                throw new IllegalStateException("Unexpected value: " + language);
+                languageCode=0;
         }
         return languageCode;
     }
