@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/AppTheme.MaterialTheme"
-    android:background="#272222"
+    android:background="@color/dark_B"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,6 +17,7 @@
         android:layout_marginTop="25dp"
         android:textSize="30sp"
         android:textColor="@color/white"
+        android:background="@color/purple"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="4dp"/>
@@ -42,7 +43,7 @@
 
         <ImageView
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
@@ -51,7 +52,7 @@
 
         <Spinner
             android:id="@+id/idToSpinner"
-            android:layout_width="5dp"
+            android:layout_width="20dp"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:padding="3dp"

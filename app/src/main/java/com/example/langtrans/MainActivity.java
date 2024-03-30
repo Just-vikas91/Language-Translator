@@ -22,6 +22,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
 import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
@@ -33,8 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText sourceEdt;
     private TextView translatedTV;
-    String[] fromLanguages = {"From","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Catalan","Czesh","French","Welsh","Hindi","Urdu","Russian"};
-    String[] toLanguages = {"To","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Catalan","Czesh","French","Welsh","Hindi","Urdu","Russian"};
+    int languageCode = 0;
+    String[] fromLanguages = {"From","Detect-language", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
+            , "Czech","Chinese", "Danish", "German", "Greek", "Hindi", "Italian", "Japanese", "Kannada", "Korean", "Marathi", "Persian","Portuguese", "Russian"
+            ,"Romanian", "Spanish", "Telugu","Tamil","Turkish","Thai", "Urdu","Ukrainian","Vietnamese", "Welsh"};
+    String[] toLanguages = {"To", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
+            , "Czech","Chinese", "Danish", "German", "Greek", "Hindi", "Italian", "Japanese", "Kannada", "Korean", "Marathi", "Persian","Portuguese", "Russian"
+            ,"Romanian", "Spanish", "Telugu","Tamil","Turkish","Thai", "Urdu","Ukrainian","Vietnamese", "Welsh"};
 
     private static final int REQUEST_PERMISSION_CODE=1;
     int fromLanguageCode;
@@ -159,9 +165,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    private void detectLanguage(String string) {
+        // initializing our firebase language detection.
+        FirebaseLanguageIdentification languageIdentifier = FirebaseNaturalLanguage.getInstance().getLanguageIdentification();
+
+        // adding method to detect language using identify language .
+        languageIdentifier.identifyLanguage(string).addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // handling error method and displaying a toast message.
+                Toast.makeText(MainActivity.this, "Fail to detect language : \n" + e, Toast.LENGTH_SHORT).show();
+            }
+        });
+//        return string;
+    }
+    protected String  ldetect = sourceEdt.getText().toString();
+//    protected String res = detectLanguage(sourceEdt.getText().toString());
     public int getlanguageCode(String language){
-        int languageCode;
+
         switch(language){
+            case "Detect-language":
+                detectLanguage(ldetect);
             case "English":
                 languageCode = FirebaseTranslateLanguage.EN;
                 break;
@@ -183,14 +213,20 @@ public class MainActivity extends AppCompatActivity {
             case "Catalan":
                 languageCode = FirebaseTranslateLanguage.CA;
                 break;
-            case "Czesh":
+            case "Czech":
                 languageCode = FirebaseTranslateLanguage.CS;
+                break;
+            case "Danish":
+                languageCode = FirebaseTranslateLanguage.DA;
+                break;
+            case "German":
+                languageCode = FirebaseTranslateLanguage.DE;
+                break;
+            case "Greek":
+                languageCode = FirebaseTranslateLanguage.EL;
                 break;
             case "Welsh":
                 languageCode = FirebaseTranslateLanguage.CY;
-                break;
-            case "French":
-                languageCode = FirebaseTranslateLanguage.FR;
                 break;
             case "Hindi":
                 languageCode = FirebaseTranslateLanguage.HI;
@@ -198,11 +234,60 @@ public class MainActivity extends AppCompatActivity {
             case "Urdu":
                 languageCode = FirebaseTranslateLanguage.UR;
                 break;
+            case "Telugu":
+                languageCode = FirebaseTranslateLanguage.TE;
+                break;
+            case "Spanish":
+                languageCode = FirebaseTranslateLanguage.ES;
+                break;
+            case "Persian":
+                languageCode = FirebaseTranslateLanguage.FA;
+                break;
+            case "Italian":
+                languageCode = FirebaseTranslateLanguage.IT;
+                break;
+            case "Japanese":
+                languageCode = FirebaseTranslateLanguage.JA;
+                break;
+            case "Kannada":
+                languageCode = FirebaseTranslateLanguage.KN;
+                break;
+            case "Korean":
+                languageCode = FirebaseTranslateLanguage.KO;
+                break;
+            case "Marathi":
+                languageCode = FirebaseTranslateLanguage.MR;
+                break;
             case "Russian":
                 languageCode = FirebaseTranslateLanguage.RU;
                 break;
+            case "Romanian":
+                languageCode = FirebaseTranslateLanguage.RO;
+                break;
+            case "Portuguese":
+                languageCode = FirebaseTranslateLanguage.PT;
+                break;
+            case "Tamil":
+                languageCode = FirebaseTranslateLanguage.TA;
+                break;
+            case "Thai":
+                languageCode = FirebaseTranslateLanguage.TH;
+                break;
+            case "Turkish":
+                languageCode = FirebaseTranslateLanguage.TR;
+                break;
+            case "Ukrainian":
+                languageCode = FirebaseTranslateLanguage.UK;
+                break;
+            case "Vietnamese":
+                languageCode = FirebaseTranslateLanguage.VI;
+                break;
+            case "Chinese":
+                languageCode = FirebaseTranslateLanguage.ZH;
+                break;
+
             default:
-                languageCode=0;
+                throw new IllegalStateException("Unexpected value: " + language);
         }
         return languageCode;
     }
