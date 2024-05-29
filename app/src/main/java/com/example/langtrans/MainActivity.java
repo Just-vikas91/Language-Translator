@@ -34,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText sourceEdt;
     private TextView translatedTV;
+//    private ImageView switchButton;
     int languageCode = 0;
-    String[] fromLanguages = {"From", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
+    String[] fromLanguages = {"English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
             , "Czech","Chinese", "Danish", "German", "Greek", "Hindi", "Italian", "Japanese", "Kannada", "Korean", "Marathi", "Persian","Portuguese", "Russian"
             ,"Romanian", "Spanish", "Telugu","Tamil","Turkish","Thai", "Urdu","Ukrainian","Vietnamese", "Welsh"};
-    String[] toLanguages = {"To", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
+    String[] toLanguages = {"English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan"
             , "Czech","Chinese", "Danish", "German", "Greek", "Hindi", "Italian", "Japanese", "Kannada", "Korean", "Marathi", "Persian","Portuguese", "Russian"
             ,"Romanian", "Spanish", "Telugu","Tamil","Turkish","Thai", "Urdu","Ukrainian","Vietnamese", "Welsh"};
 
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter toAdapter = new ArrayAdapter(this,R.layout.spinner_item,toLanguages);
         toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         toSpinner.setAdapter(toAdapter);
+
+        //switch button between two spinners
+        
 
         translateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

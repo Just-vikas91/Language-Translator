@@ -7,4 +7,5 @@
     <string name="translate">Translate</string>
     <string name="translated_text">Translated Text</string>
     <string name="todo">TODO</string>
+    <string name="enter_text">Enter Text</string>
 </resources>
