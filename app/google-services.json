@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "512381880467",
+    "project_id": "trytranslator",
+    "storage_bucket": "trytranslator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512381880467:android:d185a86127054b9f3d2566",
+        "android_client_info": {
+          "package_name": "com.example.langtrans"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYHnE-xIr0jkWa8sDe5cNTmkjpdyqPmjo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
